@@ -1,7 +1,7 @@
 $fn=50;
 
-diameter1=56;
-diameter2=25;
+diameter1=62;
+diameter2=40;
 baseThickness=5;
 
 edgeRadius=2;
