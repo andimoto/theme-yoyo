@@ -1,4 +1,4 @@
-$fn=50;
+$fn=150;
 
 diameter1=62;
 diameter2=40;
@@ -11,9 +11,9 @@ baseCutAt=7;
 edgeRadius=2;
 
 bearingPlatoHeigth=2;
-bearingPlatoDiameter=20;
+bearingPlatoDiameter=21;
 
-bearingPlatoInnerDia=16;
+bearingPlatoInnerDia=17;
 bearingPlatoInnerDia2=15;
 
 bearingStem1_Dia=6.4;
