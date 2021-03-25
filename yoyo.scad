@@ -1,4 +1,4 @@
-$fn=150;
+$fn=100;
 
 diameter1=62;
 diameter2=40;
@@ -13,13 +13,18 @@ edgeRadius=2;
 bearingPlatoHeigth=2;
 bearingPlatoDiameter=21;
 
-bearingPlatoInnerDia=17;
-bearingPlatoInnerDia2=15;
+bearingPlatoInnerDia=16;
+bearingPlatoInnerDia2=14;
 
-bearingStem1_Dia=6.4;
+bearingStem1_Dia=6.5;
 bearingStem1_Heigth=3;
 bearingStem2_Dia=8;
 bearingStem2_Heigth=1;
+
+screwHoleR=2.1;
+
+extra=1;
+
 
 module bearingCutout()
 {
@@ -27,7 +32,7 @@ module bearingCutout()
   {
     difference() {
       cylinder(r=bearingPlatoInnerDia/2, h=bearingPlatoHeigth);
-      cylinder(r=bearingPlatoInnerDia2/2, h=bearingPlatoHeigth);
+      cylinder(r=bearingPlatoInnerDia2/2, h=bearingPlatoHeigth+extra);
     }
     cylinder(r=bearingStem1_Dia/2, h=bearingStem1_Heigth);
     cylinder(r=bearingStem2_Dia/2, h=bearingStem2_Heigth);
@@ -38,27 +43,37 @@ module bearingCutout()
 
 module yoyoUpperBase()
 {
-  translate([0,0,edgeRadius])
   difference() {
-    minkowski() {
-      union()
-      {
-        /* complete yoyo half base for minkowski calculation */
-        translate([0,0,baseThickness/2]) cylinder(r1=diameter1/2-edgeRadius,
-                  r2=diameter2/2-edgeRadius,
-                  h=baseThickness/2-edgeRadius*2);
-        translate([0,0,0]) cylinder(r=diameter1/2-edgeRadius,h=baseThickness/2);
-      }
-      sphere(r=edgeRadius);
-    }
-    /* remove lower half of this upper base - this enables supportless printing */
-    translate([0,0,-edgeRadius]) cylinder(r=diameter1/2+edgeRadius*2,
-                                  h=baseThickness/2-(baseThickness/2-baseCutAt));
+    /* upper yoyo base */
+    union()
+    {
+      translate([0,0,edgeRadius])
+      difference() {
+        minkowski() {
+          union()
+          {
+            /* complete yoyo half base for minkowski calculation */
+            translate([0,0,baseThickness/2]) cylinder(r1=diameter1/2-edgeRadius,
+                      r2=diameter2/2-edgeRadius,
+                      h=baseThickness/2-edgeRadius*2);
+            translate([0,0,0]) cylinder(r=diameter1/2-edgeRadius,h=baseThickness/2);
+          }
+          sphere(r=edgeRadius);
+        }
+        /* remove lower half of this upper base - this enables supportless printing */
+        translate([0,0,-edgeRadius]) cylinder(r=diameter1/2+edgeRadius*2,
+                                      h=baseThickness/2-(baseThickness/2-baseCutAt));
 
-    /* bearing cutouts */
-    translate([0,0,baseThickness-edgeRadius-2]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth);
+        /* bearing cutouts */
+        translate([0,0,baseThickness-edgeRadius-2]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth+extra);
+      }
+      /* place cutout for yoyo bearing */
+      translate([0,0,baseThickness-edgeRadius]) bearingCutout();
+    }
+    /* screw hole */
+    cylinder(r=screwHoleR,h=baseThickness+bearingStem1_Heigth);
+    translate([0,0,7]) cylinder(r=4,h=4);
   }
-  translate([0,0,baseThickness-edgeRadius]) bearingCutout();
 }
 
 
@@ -74,6 +89,6 @@ module yoyoThemeBase()
   }
 }
 
-translate([0,0,1]) yoyoUpperBase();
+translate([0,0,0]) yoyoUpperBase();
 
 /* rotate([0,0,0]) yoyoThemeBase(); */
