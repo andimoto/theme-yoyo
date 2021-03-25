@@ -6,13 +6,35 @@ baseThickness=20;
 
 baseCutAt=7;
 
+
+/* roundness of edges : possible values: 0...5*/
 edgeRadius=2;
 
+bearingPlatoHeigth=2;
+bearingPlatoDiameter=20;
+
+bearingPlatoInnerDia=16;
+bearingPlatoInnerDia2=15;
+
+bearingStem1_Dia=6.4;
+bearingStem1_Heigth=3;
+bearingStem2_Dia=8;
+bearingStem2_Heigth=1;
 
 module bearingCutout()
 {
-
+  union()
+  {
+    difference() {
+      cylinder(r=bearingPlatoInnerDia/2, h=bearingPlatoHeigth);
+      cylinder(r=bearingPlatoInnerDia2/2, h=bearingPlatoHeigth);
+    }
+    cylinder(r=bearingStem1_Dia/2, h=bearingStem1_Heigth);
+    cylinder(r=bearingStem2_Dia/2, h=bearingStem2_Heigth);
+  }
 }
+
+/* translate([0,0,30]) bearingCutout(); */
 
 module yoyoUpperBase()
 {
@@ -34,9 +56,11 @@ module yoyoUpperBase()
                                   h=baseThickness/2-(baseThickness/2-baseCutAt));
 
     /* bearing cutouts */
-
+    translate([0,0,baseThickness-edgeRadius-2]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth);
   }
+  translate([0,0,baseThickness-edgeRadius]) bearingCutout();
 }
+
 
 module yoyoThemeBase()
 {
@@ -52,4 +76,4 @@ module yoyoThemeBase()
 
 translate([0,0,1]) yoyoUpperBase();
 
-rotate([0,0,0]) yoyoThemeBase();
+/* rotate([0,0,0]) yoyoThemeBase(); */
