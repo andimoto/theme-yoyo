@@ -21,8 +21,9 @@ bearingStem1_Heigth=3;
 bearingStem2_Dia=8;
 bearingStem2_Heigth=1;
 
-screwHoleR=2.1;
-
+screwHoleR=2.2;
+screwCylinderR=4;
+screwCylinderHeight=6;
 extra=1;
 
 
@@ -72,7 +73,10 @@ module yoyoUpperBase()
     }
     /* screw hole */
     cylinder(r=screwHoleR,h=baseThickness+bearingStem1_Heigth);
-    translate([0,0,7]) cylinder(r=4,h=4);
+    translate([0,0,baseCutAt]) cylinder(r=screwCylinderR,h=screwCylinderHeight);
+
+    /* Debugging: Middle Cut through base */
+    /* translate([-diameter1/2,0,0]) cube([diameter1,diameter1/2,baseThickness+2]); */
   }
 }
 
