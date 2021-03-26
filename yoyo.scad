@@ -24,8 +24,26 @@ bearingStem2_Heigth=1;
 screwHoleR=2.2;
 screwCylinderR=4;
 screwCylinderHeight=6;
-extra=1;
 
+scrwPlateR=5;
+
+extra=0.1;
+
+
+/* for debugging svg file */
+centerSVG=true;
+scaleSVG=0.15;
+xMoveSVG=0;
+yMoveSVG=0;
+extrudeSVG=1;
+
+fileMotive="../theme-yoyo-svg/elsa1.svg";
+
+
+module themeMotive(file)
+{
+  color("black") linear_extrude(height=1) scale(scaleSVG) import(file, center=centerSVG);
+}
 
 module bearingCutout()
 {
@@ -90,9 +108,13 @@ module yoyoThemeBase()
       sphere(r=edgeRadius);
     }
     translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)]) cylinder(r=diameter1/2+edgeRadius*2,h=baseThickness/2+edgeRadius*2);
+
+    translate([0,0,edgeRadius/4]) cylinder(r=(diameter1/2-edgeRadius-scrwPlateR), h=1, center=true);
   }
+  #translate([xMoveSVG,yMoveSVG,0]) scale([1,1,extrudeSVG]) themeMotive(fileMotive);
 }
 
-translate([0,0,0]) yoyoUpperBase();
 
-/* rotate([0,0,0]) yoyoThemeBase(); */
+
+/* translate([0,0,0]) yoyoUpperBase(); */
+rotate([0,0,0]) yoyoThemeBase();
