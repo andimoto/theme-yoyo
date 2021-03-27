@@ -32,12 +32,17 @@ extra=0.1;
 
 /* for debugging svg file */
 centerSVG=true;
-scaleSVG=0.15;
-xMoveSVG=0;
+scaleSVG=0.18;
+xMoveSVG=-3;
 yMoveSVG=0;
 extrudeSVG=1;
 
-fileMotive="../theme-yoyo-svg/elsa1.svg";
+plateScrewHeadDia=6;
+plateScrewHeadHeight=3.5;
+plateScrewDia=3;
+plateScrewHeight=6;
+
+fileMotive="../theme-yoyo-svg/elsa2.svg";
 
 
 module themeMotive(file)
