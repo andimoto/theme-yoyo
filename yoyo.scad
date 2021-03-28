@@ -37,7 +37,7 @@ plateScrewHeadHeight=2.8 +1; //screw head heigth + tolerance
 plateScrewDia=3 -0.2; //screw diameter - tolerance
 plateScrewHeight=6 +0.2; //screw heigth + tolerance
 
-/* for debugging svg file */
+/* for placing svg file */
 centerSVG=true;
 scaleSVG=0.095;
 xMoveSVG=0;
@@ -147,5 +147,11 @@ module yoyoThemeBase()
 
 
 
-/* translate([0,0,0]) yoyoUpperBase(); */
+translate([0,0,0]) yoyoUpperBase();
 rotate([0,0,0]) yoyoThemeBase();
+
+/* rotate([0,180,0]) translate([0,0,-44]) union()
+{
+translate([0,0,0]) yoyoUpperBase();
+rotate([0,0,0]) yoyoThemeBase();
+} */
