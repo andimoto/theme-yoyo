@@ -1,4 +1,4 @@
-$fn=150;
+$fn=70;
 
 diameter1=62;
 diameter2=40;
