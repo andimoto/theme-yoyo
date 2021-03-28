@@ -39,12 +39,14 @@ plateScrewHeight=6 +0.2; //screw heigth + tolerance
 
 /* for placing svg file */
 centerSVG=true;
-scaleSVG=0.095;
+scaleSVG=1.3;
 xMoveSVG=0;
 yMoveSVG=0;
+zMoveSVG=0;
+rotateSVG=0;
 extrudeSVG=1;
-
-fileMotive="../theme-yoyo-svg/rocket.svg";
+svgColor="black";
+fileMotive="svg/Saturn.svg";
 
 module screwHole()
 {
@@ -55,7 +57,12 @@ module screwHole()
 
 module themeMotive(file)
 {
-  color("black") linear_extrude(height=1) scale(scaleSVG) import(file, center=centerSVG);
+  color(svgColor)
+  rotate([0,0,rotateSVG]) translate([xMoveSVG,yMoveSVG,zMoveSVG])
+  scale([1,1,extrudeSVG])
+  linear_extrude(height=1)
+  scale(scaleSVG)
+  import(file, center=centerSVG);
 }
 
 module bearingCutout()
@@ -142,7 +149,7 @@ module yoyoThemeBase()
     /* Debugging: Middle Cut through base */
     /* translate([-diameter1/2,0,0]) cube([diameter1,diameter1/2,baseThickness+2]); */
   }
-  translate([xMoveSVG,yMoveSVG,0]) scale([1,1,extrudeSVG]) themeMotive(fileMotive);
+  themeMotive(fileMotive);
 }
 
 

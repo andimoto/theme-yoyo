@@ -1,13 +1,24 @@
 # Theme-Yoyo - a Customizable Yoyo
 
-IN DEVELOPMENT!!!
+__IN DEVELOPMENT!!!__
+
+
+*Place your own graphic on top of the yoyo or customize it as you wish.*
 
 Yoyo is based of two parts. The YoyoBase which holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with an vector graphic (fileMotive variable). Just set the correct path to your SVG file and scale the graphic (scaleSVG variable) to fit the inner part of the yoyo plate. You can move the SVG graphic with xMoveSVG, yMoveSVG or set another extrusion width.
 
-__Note: svg file is not included at the moment!!__
+The 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs __'potrace'__ which can be installed via package manager (on Linux).
 
-The 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs 'potrace' which can be installed via package manager (on Linux).
+SVG graphics with CC0 license can be obtained at:
+  - https://publicdomainvectors.org/
+  - https://freesvg.org/
 
+### Printing
+- print ThemeBase on flat surface
+- do color change at the graphic to separate it from background
+- ...
+
+### Images
 ![](pics/yoyo.png)
 ![](pics/yoyoComplete.png)
 ![](pics/yoyoBase.png)
