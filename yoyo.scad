@@ -147,5 +147,5 @@ module yoyoThemeBase()
 
 
 
-translate([0,0,0]) yoyoUpperBase();
-/* rotate([0,0,0]) yoyoThemeBase(); */
+/* translate([0,0,0]) yoyoUpperBase(); */
+rotate([0,0,0]) yoyoThemeBase();
