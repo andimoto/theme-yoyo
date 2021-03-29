@@ -39,14 +39,14 @@ plateScrewHeight=6 +0.2; //screw heigth + tolerance
 
 /* for placing svg file */
 centerSVG=true;
-scaleSVG=1.3;
+scaleSVG=0.36;
 xMoveSVG=0;
 yMoveSVG=0;
 zMoveSVG=0;
-rotateSVG=0;
+rotateSVG=-20;
 extrudeSVG=1;
 svgColor="black";
-fileMotive="svg/Saturn.svg";
+fileMotive="svg/Rocket001.svg";
 
 module screwHole()
 {
@@ -154,7 +154,7 @@ module yoyoThemeBase()
 
 
 
-translate([0,0,0]) yoyoUpperBase();
+/* translate([0,0,0]) yoyoUpperBase(); */
 rotate([0,0,0]) yoyoThemeBase();
 
 /* rotate([0,180,0]) translate([0,0,-44]) union()
