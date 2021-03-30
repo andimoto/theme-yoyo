@@ -1,7 +1,7 @@
 $fn=70;
 
 diameter1=62;
-diameter2=40;
+diameter2=25;
 baseThickness=20;
 
 baseCutAt=7;
@@ -12,14 +12,17 @@ edgeRadius=2;
 
 bearingPlatoHeigth=2;
 bearingPlatoDiameter=21;
+bearingCutoutDepth=2;
 
 bearingPlatoInnerDia=16;
-bearingPlatoInnerDia2=14;
+bearingPlatoInnerDia2=13.5;
+
+
 
 bearingStem1_Dia=6.5;
 bearingStem1_Heigth=3;
 bearingStem2_Dia=8;
-bearingStem2_Heigth=1;
+bearingStem2_Heigth=1.6;
 
 screwHoleR=2.2;
 screwCylinderR=4;
@@ -80,7 +83,7 @@ module bearingCutout()
 
 /* translate([0,0,30]) bearingCutout(); */
 
-module yoyoUpperBase()
+module yoyoBase()
 {
   difference() {
     /* upper yoyo base */
@@ -104,7 +107,7 @@ module yoyoUpperBase()
                                       h=baseThickness/2-(baseThickness/2-baseCutAt));
 
         /* bearing cutouts */
-        translate([0,0,baseThickness-edgeRadius-2]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth+extra);
+        translate([0,0,baseThickness-edgeRadius-bearingCutoutDepth]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth+extra);
       }
       /* place cutout for yoyo bearing */
       translate([0,0,baseThickness-edgeRadius]) bearingCutout();
@@ -154,7 +157,7 @@ module yoyoThemeBase()
 
 
 
-/* translate([0,0,0]) yoyoUpperBase(); */
+translate([0,0,0]) yoyoBase();
 rotate([0,0,0]) yoyoThemeBase();
 
 /* rotate([0,180,0]) translate([0,0,-44]) union()
