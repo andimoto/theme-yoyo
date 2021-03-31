@@ -46,13 +46,14 @@ balanceRing2r=15;
 
 /* for placing svg file */
 centerSVG=true;
-scaleSVG=0.36;
+scaleSVG=1.30;
 xMoveSVG=0;
 yMoveSVG=0;
 zMoveSVG=0;
 rotateSVG=-20;
 extrudeSVG=1;
-fileMotive="svg/Rocket001.svg";
+fileMotive="svg/Saturn.svg";
+/* fileMotive="svg/Rocket001.svg"; */
 
 module screwHole()
 {
@@ -172,8 +173,8 @@ module yoyoThemeBase()
 
 
 
-/* translate([0,0,0]) yoyoBase(); */
-rotate([0,0,0]) yoyoThemeBase();
+translate([0,0,0]) yoyoBase();
+/* rotate([0,0,0]) yoyoThemeBase(); */
 
 /* rotate([0,180,0]) translate([0,0,-44]) union()
 {
