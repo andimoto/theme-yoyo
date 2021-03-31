@@ -33,12 +33,16 @@ screwPlateR=5;
 extra=0.1;
 
 
-
-
 plateScrewHeadDia=5.4 +0.6; //screw head diameter + tolerance
 plateScrewHeadHeight=2.8 +1; //screw head heigth + tolerance
 plateScrewDia=3 -0.2; //screw diameter - tolerance
 plateScrewHeight=6 +0.2; //screw heigth + tolerance
+
+balanceRingHeight=2;
+balanceRing1r=23;
+balanceRing2r=15;
+
+
 
 /* for placing svg file */
 centerSVG=true;
@@ -48,7 +52,6 @@ yMoveSVG=0;
 zMoveSVG=0;
 rotateSVG=-20;
 extrudeSVG=1;
-svgColor="black";
 fileMotive="svg/Rocket001.svg";
 
 module screwHole()
@@ -57,10 +60,17 @@ module screwHole()
   cylinder(r=plateScrewDia/2, h=plateScrewHeight+plateScrewHeadHeight);
 }
 
+module balanceRing(rInner=20,rOuter=21.75)
+{
+  difference() {
+    cylinder(r=rOuter,h=balanceRingHeight);
+    translate([0,0,-extra/2]) cylinder(r=rInner,h=balanceRingHeight+extra);
+  }
+}
+/* balanceRing(); */
 
 module themeMotive(file)
 {
-  color(svgColor)
   rotate([0,0,rotateSVG]) translate([xMoveSVG,yMoveSVG,zMoveSVG])
   scale([1,1,extrudeSVG])
   linear_extrude(height=1)
@@ -148,6 +158,11 @@ module yoyoThemeBase()
     translate([0,(diameter1/2)-edgeRadius/2-screwPlateR/2,0]) screwHole();
     translate([0,-(diameter1/2)+edgeRadius/2+screwPlateR/2,0]) screwHole();
 
+    translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)-edgeRadius])
+    balanceRing(rInner=balanceRing1r, rOuter=balanceRing1r+1.75);
+
+    translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)-edgeRadius])
+    balanceRing(rInner=balanceRing2r, rOuter=balanceRing2r+1.75);
 
     /* Debugging: Middle Cut through base */
     /* translate([-diameter1/2,0,0]) cube([diameter1,diameter1/2,baseThickness+2]); */
@@ -157,7 +172,7 @@ module yoyoThemeBase()
 
 
 
-translate([0,0,0]) yoyoBase();
+/* translate([0,0,0]) yoyoBase(); */
 rotate([0,0,0]) yoyoThemeBase();
 
 /* rotate([0,180,0]) translate([0,0,-44]) union()
