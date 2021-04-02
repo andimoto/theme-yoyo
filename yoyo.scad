@@ -20,9 +20,9 @@ bearingPlatoInnerDia2=13.5;
 
 
 bearingStem1_Dia=6.5;
-bearingStem1_Heigth=3;
+bearingStem1_Heigth=2.8;
 bearingStem2_Dia=8;
-bearingStem2_Heigth=1.6;
+bearingStem2_Heigth=0.8;
 
 screwHoleR=2.2;
 screwCylinderR=4;
