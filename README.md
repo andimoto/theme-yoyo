@@ -10,13 +10,23 @@ Yoyo is based of two parts. The YoyoBase which holds both halfs together via scr
 The 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs __'potrace'__ which can be installed via package manager (on Linux).
 
 SVG graphics with CC0 license can be obtained at:
+
   - https://publicdomainvectors.org/
   - https://freesvg.org/
+  - https://www.svgrepo.com
 
 ### Printing
 - print ThemeBase on flat surface
 - do color change at the graphic to separate it from background
 - ...
+
+### Parts
+- printed YoYo Parts (2x yoyoBase_xmm.stl, 2x YoyoThemeX.stl)
+- one M4x20 or M3x20 for Axis. Depends on which version you print (cylinder head screw)
+- 8 M3x6 screw (cylinder head screw)
+
+### Assembling
+-
 
 ### Images
 ![](pics/yoyo.png)

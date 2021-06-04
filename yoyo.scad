@@ -24,7 +24,7 @@ bearingStem1_Heigth=2.8;
 bearingStem2_Dia=8;
 bearingStem2_Heigth=0.8;
 
-screwHoleR=2.2;
+screwHoleR=1.6;
 screwCylinderR=4;
 screwCylinderHeight=6;
 
@@ -46,13 +46,13 @@ balanceRing2r=15;
 
 /* for placing svg file */
 centerSVG=true;
-scaleSVG=0.20;
-xMoveSVG=-2;
-yMoveSVG=1;
+scaleSVG=0.45;
+xMoveSVG=0;
+yMoveSVG=0;
 zMoveSVG=0;
 rotateSVG=-20;
 extrudeSVG=1;
-fileMotive="svg/horse.svg";
+fileMotive="svg/snowflake.svg";
 /* fileMotive="svg/Rocket001.svg"; */
 
 module screwHole()
