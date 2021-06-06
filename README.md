@@ -1,6 +1,6 @@
 # Theme-Yoyo - a Customizable Yoyo
 
-__IN DEVELOPMENT!!!__
+![](pics/yoyoLogo.png)
 
 
 *Place your own graphic on top of the yoyo or customize it as you wish.*
@@ -16,17 +16,31 @@ SVG graphics with CC0 license can be obtained at:
   - https://www.svgrepo.com
 
 ### Printing
-- print ThemeBase on flat surface
+- print ThemeBase on flat surface (graphic up)
 - do color change at the graphic to separate it from background
+- enable ironing on top layers the get a nice finish
+- print resolution 0.1mm
+- use PETG for stronger parts
 - ...
 
 ### Parts
 - printed YoYo Parts (2x yoyoBase_xmm.stl, 2x YoyoThemeX.stl)
-- one M4x20 or M3x20 for Axis. Depends on which version you print (cylinder head screw)
+- one M3x20 screw with M3 nut for Axis
 - 8 M3x6 screw (cylinder head screw)
+- 2 O-Rings 15x2.5mm
+- R188KK Bearing
+- Cord (there are ready Yoyo Cords, relatively cheap)
 
 ### Assembling
--
+- place the bearing onto the center of the yoyo base
+- place the o-ring in both yoyo bases
+- put both yoyo bases together (may be necessary to press them carefully together)
+  - they should be holded together by the bearing
+- screw both yoyo bases together with the M3x20 screw (do not overthight the axis)
+- screw the theme parts on top of each base carefully (do not overthight them)
+  - tip: measure the weigth of the theme parts and balance them out with small parts of filament
+    which you can place into the furrow/gouge which are extra made for weigth balancing
+- maybe the yoyo needs to be weared in some minutes
 
 ### Images
 ![](pics/yoyo.png)

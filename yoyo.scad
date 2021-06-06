@@ -24,8 +24,8 @@ bearingStem1_Heigth=2.8;
 bearingStem2_Dia=8;
 bearingStem2_Heigth=0.8;
 
-screwHoleR=1.6;
-screwCylinderR=4;
+screwHoleR=1.7;
+screwCylinderR=5;
 screwCylinderHeight=6;
 
 screwPlateR=5;
@@ -46,13 +46,13 @@ balanceRing2r=15;
 
 /* for placing svg file */
 centerSVG=true;
-scaleSVG=0.45;
+scaleSVG=0.18;
 xMoveSVG=0;
-yMoveSVG=0;
+yMoveSVG=2;
 zMoveSVG=0;
-rotateSVG=-20;
+rotateSVG=45;
 extrudeSVG=1;
-fileMotive="svg/snowflake.svg";
+fileMotive="svg/osHW.svg";
 /* fileMotive="svg/Rocket001.svg"; */
 
 module screwHole()
@@ -173,11 +173,11 @@ module yoyoThemeBase()
 
 
 
-/* translate([0,0,0]) yoyoBase(); */
+translate([0,0,0]) yoyoBase();
 rotate([0,0,0]) yoyoThemeBase();
 
-/* rotate([0,180,0]) translate([0,0,-44]) union()
+rotate([0,180,0]) translate([0,0,-44]) union()
 {
-translate([0,0,0]) yoyoUpperBase();
+translate([0,0,0]) yoyoBase();
 rotate([0,0,0]) yoyoThemeBase();
-} */
+}
