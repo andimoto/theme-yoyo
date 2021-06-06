@@ -5,9 +5,10 @@
 
 *Place your own graphic on top of the yoyo or customize it as you wish.*
 
-Yoyo is based of two parts. The YoyoBase which holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with an vector graphic (fileMotive variable). Just set the correct path to your SVG file and scale the graphic (scaleSVG variable) to fit the inner part of the yoyo plate. You can move the SVG graphic with xMoveSVG, yMoveSVG or set another extrusion width.
+Yoyo is based of two parts. The YoyoBase which holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with an vector graphic ('fileMotive' variable).
+Just set the correct path to your SVG file with the 'fileMotive' variable and scale the graphic ('scaleSVG' variable) to fit the inner part of the upper yoyo plate. You can move the SVG graphic with xMoveSVG, yMoveSVG or set another extrusion width.
 
-The 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs __'potrace'__ which can be installed via package manager (on Linux).
+Additionally: the 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs __'potrace'__ which can be installed via package manager (on Linux).
 
 SVG graphics with CC0 license can be obtained at:
 
@@ -26,7 +27,7 @@ SVG graphics with CC0 license can be obtained at:
 ### Parts
 - printed YoYo Parts (2x yoyoBase_xmm.stl, 2x YoyoThemeX.stl)
 - one M3x20 screw with M3 nut for Axis
-- 8 M3x6 screw (cylinder head screw)
+- 8 M3x6 screws (cylinder head screw)
 - 2 O-Rings 15x2.5mm
 - R188KK Bearing
 - Cord (there are ready Yoyo Cords, relatively cheap)
@@ -44,9 +45,16 @@ SVG graphics with CC0 license can be obtained at:
 
 ### Images
 ![](pics/yoyo.png)
+
 ![](pics/yoyoComplete.png)
+
 ![](pics/yoyoBase.png)
+
 ![](pics/yoyoTheme.png)
+
+![](pics/000.jpg)
+
+![](pics/001.jpg)
 
 # LICENSE
 

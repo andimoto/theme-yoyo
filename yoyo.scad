@@ -1,4 +1,4 @@
-$fn=70;
+$fn=100;
 
 diameter1=62;
 diameter2=25;
@@ -174,10 +174,10 @@ module yoyoThemeBase()
 
 
 translate([0,0,0]) yoyoBase();
-rotate([0,0,0]) yoyoThemeBase();
+/* rotate([0,0,0]) yoyoThemeBase(); */
 
-rotate([0,180,0]) translate([0,0,-44]) union()
+/* rotate([0,180,0]) translate([0,0,-44]) union()
 {
 translate([0,0,0]) yoyoBase();
 rotate([0,0,0]) yoyoThemeBase();
-}
+} */
