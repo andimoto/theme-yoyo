@@ -1,9 +1,9 @@
 # Theme-Yoyo - a Customizable Yoyo
 
-![](pics/yoyoLogo.png)
+![](pics/yoyoLogoReal.jpg)
 
 
-*Place your own graphic on top of the yoyo or customize it as you wish.*
+*Place your own graphic on top of the yoyo or customize it!!*
 
 Yoyo is based of two parts. The YoyoBase which holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with an vector graphic ('fileMotive' variable).
 Just set the correct path to your SVG file with the 'fileMotive' variable and scale the graphic ('scaleSVG' variable) to fit the inner part of the upper yoyo plate. You can move the SVG graphic with xMoveSVG, yMoveSVG or set another extrusion width.
@@ -52,9 +52,15 @@ SVG graphics with CC0 license can be obtained at:
 
 ![](pics/yoyoTheme.png)
 
+![](pics/003.JPG)
+
 ![](pics/000.jpg)
 
 ![](pics/001.jpg)
+
+![](pics/002_OSI.jpg)
+
+![](pics/002_OHW.jpg)
 
 # LICENSE
 
