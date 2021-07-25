@@ -44,16 +44,37 @@ balanceRing2r=15;
 
 
 
-/* for placing svg file */
-centerSVG=true;
-scaleSVG=0.075;
-xMoveSVG=0;
-yMoveSVG=0.8;
-zMoveSVG=-0.4;
-rotateSVG=45;
-extrudeSVG=2;
-fileMotive="svg/osInit.svg";
-/* fileMotive="svg/Rocket001.svg"; */
+/* place svg file configs */
+motiveConf1 = [
+"svg/tux.svg",  // file motive
+true,           // center SVG
+0.09,           // scale SVG
+0,              // x Move SVG
+2,              // y Move SVG
+0,              // z Move SVG
+45,             // rotate SVG
+1               // extrude SVG (thickness)
+];
+
+motiveConf2 = [
+"svg/keyboard.svg",  // file motive
+true,           // center SVG
+1,              // mirror on x axis
+0.25,           // scale SVG
+0,              // x Move SVG
+2,              // y Move SVG
+0,              // z Move SVG
+45,             // rotate SVG
+1               // extrude SVG (thickness)
+];
+
+/* add each motive configuration to this array */
+motiveList = [
+  /* motiveConf1, */
+  motiveConf2
+];
+
+
 
 module screwHole()
 {
@@ -70,14 +91,18 @@ module balanceRing(rInner=20,rOuter=21.75)
 }
 /* balanceRing(); */
 
-module themeMotive(file)
+
+
+module themeMotive(motiveConf)
 {
-  rotate([0,0,rotateSVG]) translate([xMoveSVG,yMoveSVG,zMoveSVG])
-  scale([1,1,extrudeSVG])
+  mirror([motiveConf[2],0,0])
+  rotate([0,0,motiveConf[7]]) translate([-motiveConf[4],motiveConf[5],motiveConf[6]])
+  scale([1,1,motiveConf[8]])
   linear_extrude(height=1)
-  scale(scaleSVG)
-  import(file, center=centerSVG);
+  scale(motiveConf[3])
+  import(motiveConf[0], center=motiveConf[1]);
 }
+
 
 module bearingCutout()
 {
@@ -168,7 +193,11 @@ module yoyoThemeBase()
     /* Debugging: Middle Cut through base */
     /* translate([-diameter1/2,0,0]) cube([diameter1,diameter1/2,baseThickness+2]); */
   }
-  themeMotive(fileMotive);
+  for(motive = motiveList)
+  {
+    themeMotive(motive);
+  }
+  /* themeMotive(fileMotive2); */
 }
 
 

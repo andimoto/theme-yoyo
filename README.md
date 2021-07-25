@@ -3,10 +3,10 @@
 ![](pics/yoyoLogoReal.jpg)
 
 
-*Place your own graphic on top of the yoyo or customize it!!*
+*Place your own graphics on top of the yoyo or customize it!!*
 
-Yoyo is based of two parts. The YoyoBase which holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with an vector graphic ('fileMotive' variable).
-Just set the correct path to your SVG file with the 'fileMotive' variable and scale the graphic ('scaleSVG' variable) to fit the inner part of the upper yoyo plate. You can move the SVG graphic with xMoveSVG, yMoveSVG or set another extrusion width.
+Yoyo is based of two parts, YoyoBase & ThemeBase. The YoyoBase holds both halfs together via screw and bearing (R188KK - 8-Ball-Bearing). The ThemeBase can be customized with multiple vector graphics per ThemeBase.
+To add your favorite SVG motive create a 'motive configuration'. This is an array which holds the path to the file and several parameters such as 'moveXYZ', 'extrude' or 'scale'. This 'motive configuration' has to be set to the list 'motiveList'. All motives in this list will be placed on the YoyoBase. This way it is possible to place and combine multiple SVG motives.
 
 Additionally: the 'tools'-directory contains a bash script to convert a png to svg (with pre-conversion to pnm). This script needs __'potrace'__ which can be installed via package manager (on Linux).
 
@@ -22,7 +22,12 @@ SVG graphics with CC0 license can be obtained at:
 - enable ironing on top layers the get a nice finish
 - print resolution 0.1mm
 - use PETG for stronger parts
-- ...
+
+#### Advices
+- use filament changes to separate motive from base
+- when printing multiple motives, set extrusion length (thickness) to different heights.
+  This enables filament changes on different layers and get a multicolor Yoyo!
+
 
 ### Parts
 - printed YoYo Parts (2x yoyoBase_xmm.stl, 2x YoyoThemeX.stl)
