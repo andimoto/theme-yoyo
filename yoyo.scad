@@ -57,12 +57,12 @@ true,           // center SVG
 ];
 
 motiveConf2 = [
-"svg/keyboard.svg",  // file motive
+"svg/keyboard003.svg",  // file motive
 true,           // center SVG
 1,              // mirror on x axis
-0.25,           // scale SVG
-0,              // x Move SVG
-2,              // y Move SVG
+0.17,           // scale SVG
+-3,              // x Move SVG
+46,              // y Move SVG
 0,              // z Move SVG
 45,             // rotate SVG
 1               // extrude SVG (thickness)
@@ -95,8 +95,9 @@ module balanceRing(rInner=20,rOuter=21.75)
 
 module themeMotive(motiveConf)
 {
+  translate([-motiveConf[4],motiveConf[5],motiveConf[6]])
   mirror([motiveConf[2],0,0])
-  rotate([0,0,motiveConf[7]]) translate([-motiveConf[4],motiveConf[5],motiveConf[6]])
+  rotate([0,0,motiveConf[7]])
   scale([1,1,motiveConf[8]])
   linear_extrude(height=1)
   scale(motiveConf[3])
