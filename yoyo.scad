@@ -9,9 +9,66 @@ single parts set 'showBase' or 'showTop' to 'true'
 
 $fn=100;
 
-showBase = true;
-showThemeBaseNr = 0;  // 0 = no theme, 1 = motive 1, 2 = motive 2
-showYoyoBuild = false;
+/* ################### !!! Show Parts  !!! ############################ */
+
+
+showBase = false; // true to show Base
+showThemeBaseNr = 3;  // 0 = no theme, 1 = motive 1, 2 = motive 2, 3 = both sides
+showYoyoBuild = false; // true to show base and theme part togehter
+
+/* ################### !!! Configure Motives  !!! ############################ */
+
+/* place svg file configs */
+motiveConf1 = [
+"svg/tux.svg",  // file motive
+true,           // center SVG
+0,              // mirror on x axis
+0.09,           // scale SVG
+0,              // x Move SVG
+2,              // y Move SVG
+0,              // z Move SVG
+-45,             // rotate SVG
+2               // extrude SVG (thickness)
+];
+
+motiveConf2 = [
+"svg/guitar.svg",  // file motive
+true,           // center SVG
+1,              // mirror on x axis
+0.35,           // scale SVG
+1.5,              // x Move SVG
+0,              // y Move SVG
+0,              // z Move SVG
+10,             // rotate SVG
+2               // extrude SVG (thickness)
+];
+
+motiveConf3 = [
+"svg/snowflake.svg",  // file motive
+true,           // center SVG
+1,              // mirror on x axis
+0.35,           // scale SVG
+0,              // x Move SVG
+0,              // y Move SVG
+0,              // z Move SVG
+10,             // rotate SVG
+1               // extrude SVG (thickness)
+];
+
+/* add each motive configuration to this array */
+motiveListA = [
+  motiveConf1,
+  /* motiveConf2 */
+];
+
+motiveListB = [
+  /* motiveConf1, */
+  motiveConf3
+];
+
+
+/* #################################################################### */
+
 
 diameter1=62;
 diameter2=25;
@@ -55,45 +112,7 @@ balanceRing1r=23;
 balanceRing2r=15;
 
 
-
-/* place svg file configs */
-motiveConf1 = [
-"svg/tux.svg",  // file motive
-true,           // center SVG
-0,              // mirror on x axis
-0.09,           // scale SVG
-0,              // x Move SVG
-2,              // y Move SVG
-0,              // z Move SVG
-45,             // rotate SVG
-1               // extrude SVG (thickness)
-];
-
-motiveConf2 = [
-"svg/guitar.svg",  // file motive
-true,           // center SVG
-1,              // mirror on x axis
-0.35,           // scale SVG
-1.5,              // x Move SVG
-0,              // y Move SVG
-0,              // z Move SVG
--55,             // rotate SVG
-2               // extrude SVG (thickness)
-];
-
-/* add each motive configuration to this array */
-motiveListA = [
-  motiveConf1,
-  motiveConf2
-];
-
-motiveListB = [
-  motiveConf1,
-  motiveConf2
-];
-
-
-
+/* ################### !!! MODULES  !!! ############################ */
 
 module balanceRing(rInner=20,rOuter=21.75)
 {
@@ -158,8 +177,8 @@ module yoyoBase()
           sphere(r=edgeRadius);
         }
         /* remove lower half of this upper base - this enables supportless printing */
-        translate([0,0,-edgeRadius]) cylinder(r=diameter1/2+edgeRadius*2,
-                                      h=baseThickness/2-(baseThickness/2-baseCutAt));
+        translate([0,0,-edgeRadius-extra]) cylinder(r=diameter1/2+edgeRadius*2,
+                                      h=+extra+baseThickness/2-(baseThickness/2-baseCutAt));
 
         /* bearing cutouts */
         translate([0,0,baseThickness-edgeRadius-bearingCutoutDepth]) cylinder(r=bearingPlatoDiameter/2, h=bearingPlatoHeigth+extra);
@@ -261,15 +280,22 @@ if(showBase)
 
 if(showThemeBaseNr)
 {
-  /* rotate([0,180,0])  */
-  yoyoThemeBase(showThemeBaseNr);
+  if(showThemeBaseNr == 3)
+  {
+    yoyoThemeBase(1);
+    translate([diameter1+10,0,0]) yoyoThemeBase(2);
+  }else{
+    /* rotate([0,180,0])  */
+    yoyoThemeBase(showThemeBaseNr);
+  }
 }
 
 if(showYoyoBuild)
 {
-  rotate([0,180,0]) translate([0,0,-44]) union()
+  rotate([0,90,0])
+  union()
   {
     translate([0,0,0]) yoyoBase();
-    rotate([0,0,0]) yoyoThemeBase();
+    rotate([0,180,0]) yoyoThemeBase(motiveNr = 1);
   }
 }
