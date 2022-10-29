@@ -1,4 +1,17 @@
+/* yoyo.scad
+Author: andimoto@posteo.de
+----------------------------
+for placing assambled parts and
+single parts set 'showBase' or 'showTop' to 'true'
+
+*/
+
+
 $fn=100;
+
+showBase = false;
+showThemeBaseNr = 1;  // 0 = no theme, 1 = motive 1, 2 = motive 2, 3 = both motives
+showYoyoBuild = false;
 
 diameter1=62;
 diameter2=25;
@@ -16,7 +29,6 @@ bearingCutoutDepth=2;
 
 bearingPlatoInnerDia=16;
 bearingPlatoInnerDia2=13.5;
-
 
 
 bearingStem1_Dia=6.5;
@@ -46,8 +58,9 @@ balanceRing2r=15;
 
 /* place svg file configs */
 motiveConf1 = [
-"svg/tux.svg",  // file motive
+"svg/guitar.svg",  // file motive
 true,           // center SVG
+0,              // mirror on x axis
 0.09,           // scale SVG
 0,              // x Move SVG
 2,              // y Move SVG
@@ -57,30 +70,30 @@ true,           // center SVG
 ];
 
 motiveConf2 = [
-"svg/keyboard003.svg",  // file motive
+"svg/guitar.svg",  // file motive
 true,           // center SVG
 1,              // mirror on x axis
-0.17,           // scale SVG
--3,              // x Move SVG
-46,              // y Move SVG
+0.55,           // scale SVG
+1.5,              // x Move SVG
+0,              // y Move SVG
 0,              // z Move SVG
-45,             // rotate SVG
+-45,             // rotate SVG
 1               // extrude SVG (thickness)
 ];
 
 /* add each motive configuration to this array */
-motiveList = [
+motiveListA = [
   /* motiveConf1, */
+  motiveConf2
+];
+
+motiveListB = [
+  motiveConf1,
   motiveConf2
 ];
 
 
 
-module screwHole()
-{
-  cylinder(r=plateScrewHeadDia/2, h=plateScrewHeadHeight);
-  cylinder(r=plateScrewDia/2, h=plateScrewHeight+plateScrewHeadHeight);
-}
 
 module balanceRing(rInner=20,rOuter=21.75)
 {
@@ -93,15 +106,19 @@ module balanceRing(rInner=20,rOuter=21.75)
 
 
 
-module themeMotive(motiveConf)
+module themeMotive(motiveList)
 {
-  translate([-motiveConf[4],motiveConf[5],motiveConf[6]])
-  mirror([motiveConf[2],0,0])
-  rotate([0,0,motiveConf[7]])
-  scale([1,1,motiveConf[8]])
-  linear_extrude(height=1)
-  scale(motiveConf[3])
-  import(motiveConf[0], center=motiveConf[1]);
+
+  for(motive = motiveList)
+  {
+    translate([motive[4],motive[5],motive[6]])
+    mirror([motive[2],0,0])
+    rotate([0,0,motive[7]])
+    scale([1,1,motive[8]])
+    linear_extrude(height=1)
+    scale(motive[3])
+    import(motive[0], center=motive[1]);
+  }
 }
 
 
@@ -167,47 +184,83 @@ module yoyoBase()
 }
 
 
-module yoyoThemeBase()
+module screwHole()
+{
+  translate([0,0,baseThickness/2+edgeRadius*2-plateScrewHeadHeight])
+    cylinder(r=plateScrewHeadDia/2, h=plateScrewHeadHeight+extra);
+  cylinder(r=plateScrewDia/2, h=baseThickness/2+edgeRadius*2);
+}
+
+module yoyoThemeBase(motiveNr = 0)
 {
   difference() {
+    translate([0,0,-baseCutAt])
     minkowski()
     {
       translate([0,0,edgeRadius]) cylinder(r=diameter1/2-edgeRadius,h=baseThickness/2);
       sphere(r=edgeRadius);
     }
-    translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)]) cylinder(r=diameter1/2+edgeRadius*2,h=baseThickness/2+edgeRadius*2);
 
-    translate([0,0,edgeRadius/4]) cylinder(r=(diameter1/2-edgeRadius-screwPlateR), h=1, center=true);
+    translate([0,0,-baseCutAt])
+    union()
+    {
+      translate([0,0,(baseThickness/2+edgeRadius*2)-0.5])
+        cylinder(r=(diameter1/2-edgeRadius-screwPlateR), h=1+extra, center=true);
 
-    /* screws to fix upper yoyo base to lower yoyo base */
-    translate([(diameter1/2)-edgeRadius/2-screwPlateR/2,0,0]) screwHole();
-    translate([-(diameter1/2)+edgeRadius/2+screwPlateR/2,0,0]) screwHole();
-    translate([0,(diameter1/2)-edgeRadius/2-screwPlateR/2,0]) screwHole();
-    translate([0,-(diameter1/2)+edgeRadius/2+screwPlateR/2,0]) screwHole();
+      /* screws to fix upper yoyo base to lower yoyo base */
+      translate([(diameter1/2)-edgeRadius/2-screwPlateR/2,0,0]) screwHole();
+      translate([-(diameter1/2)+edgeRadius/2+screwPlateR/2,0,0]) screwHole();
+      translate([0,(diameter1/2)-edgeRadius/2-screwPlateR/2,0]) screwHole();
+      translate([0,-(diameter1/2)+edgeRadius/2+screwPlateR/2,0]) screwHole();
+    }
 
-    translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)-edgeRadius])
-    balanceRing(rInner=balanceRing1r, rOuter=balanceRing1r+1.75);
+    translate([0,0,-extra])
+    balanceRing(rInner=balanceRing1r, rOuter=balanceRing1r+1.75+extra);
 
-    translate([0,0,baseThickness/2-(baseThickness/2-baseCutAt)-edgeRadius])
-    balanceRing(rInner=balanceRing2r, rOuter=balanceRing2r+1.75);
+    translate([0,0,-extra])
+    balanceRing(rInner=balanceRing2r, rOuter=balanceRing2r+1.75+extra);
+
+    translate([0,0,-(baseThickness/2+edgeRadius*2)])
+      cylinder(r=diameter1/2+edgeRadius*2,h=baseThickness/2+edgeRadius*2);
 
     /* Debugging: Middle Cut through base */
     /* translate([-diameter1/2,0,0]) cube([diameter1,diameter1/2,baseThickness+2]); */
   }
-  for(motive = motiveList)
+
+  translate([0,0,(baseThickness/2+edgeRadius*2)-baseCutAt-1])
+  union()
   {
-    themeMotive(motive);
+    if(motiveNr == 1)
+    {
+      themeMotive(motiveListA);
+    }
+
+    if(motiveNr == 2)
+    {
+      themeMotive(motiveListB);
+    }
   }
   /* themeMotive(fileMotive2); */
 }
+yoyoThemeBase(motiveNr = 0);
 
-
-
-/* translate([0,0,0]) yoyoBase(); */
-rotate([0,180,0]) yoyoThemeBase();
-
-/* rotate([0,180,0]) translate([0,0,-44]) union()
+if(showBase)
 {
-translate([0,0,0]) yoyoBase();
-rotate([0,0,0]) yoyoThemeBase();
-} */
+  translate([0,0,0])
+  yoyoBase();
+}
+
+if(showThemeBaseNr)
+{
+  /* rotate([0,180,0])  */
+  yoyoThemeBase(showThemeBaseNr);
+}
+
+if(showYoyoBuild)
+{
+  rotate([0,180,0]) translate([0,0,-44]) union()
+  {
+  translate([0,0,0]) yoyoBase();
+  rotate([0,0,0]) yoyoThemeBase();
+  }
+}
