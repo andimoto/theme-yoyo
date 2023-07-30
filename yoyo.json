@@ -1,0 +1,36 @@
+{
+    "parameterSets": {
+        "unicorns": {
+            "$fn": "100",
+            "balanceRing1r": "23",
+            "balanceRing2r": "15",
+            "balanceRingHeight": "2",
+            "baseCutAt": "7",
+            "baseThickness": "20",
+            "bearingCutoutDepth": "2",
+            "bearingPlatoDiameter": "21",
+            "bearingPlatoHeigth": "2",
+            "bearingPlatoInnerDia": "16",
+            "bearingPlatoInnerDia2": "13.5",
+            "bearingStem1_Dia": "6.5",
+            "bearingStem1_Heigth": "2.8",
+            "bearingStem2_Dia": "8",
+            "bearingStem2_Heigth": "0.8",
+            "diameter1": "62",
+            "diameter2": "25",
+            "edgeRadius": "2",
+            "extra": "0.1",
+            "motiveConf1": "[\"svg\/unicorn001.svg\", true, 0, 0.5, 1, -2, 0, 0, 1]",
+            "motiveConf2": "[\"svg\/unicorn004.svg\", true, 1, 0.23, 2, -2.5, 0, 15, 1]",
+            "motiveConf3": "[\"svg\/unicorn003.svg\", true, 1, 0.35, 0, 0, 0, 10, 1]",
+            "screwCylinderHeight": "6",
+            "screwCylinderR": "5",
+            "screwHoleR": "1.7",
+            "screwPlateR": "5",
+            "showBase": "false",
+            "showThemeBaseNr": "1",
+            "showYoyoBuild": "false"
+        }
+    },
+    "fileFormatVersion": "1"
+}

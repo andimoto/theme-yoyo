@@ -11,47 +11,49 @@ $fn=100;
 
 /* ################### !!! Show Parts  !!! ############################ */
 
-
-showBase = false; // true to show Base
-showThemeBaseNr = 3;  // 0 = no theme, 1 = motive 1, 2 = motive 2, 3 = both sides
-showYoyoBuild = false; // true to show base and theme part togehter
+// true to show Base
+showBase = false;
+// 0 = no theme, 1 = motive 1 | 2 = motive 2 | 3 = both sides
+showThemeBaseNr = 2; // [0,1,2,3]
+// true to show base and theme part togehter
+showYoyoBuild = false;
 
 /* ################### !!! Configure Motives  !!! ############################ */
 
 /* place svg file configs */
 motiveConf1 = [
-"svg/tux.svg",  // file motive
+"svg/unicorn001.svg",  // file motive
 true,           // center SVG
 0,              // mirror on x axis
-0.09,           // scale SVG
-0,              // x Move SVG
-2,              // y Move SVG
+0.50,           // scale SVG
+1,              // x Move SVG
+-2,              // y Move SVG
 0,              // z Move SVG
--45,             // rotate SVG
-2               // extrude SVG (thickness)
+0,             // rotate SVG
+1               // extrude SVG (thickness)
 ];
 
 motiveConf2 = [
-"svg/guitar.svg",  // file motive
+"svg/unicorn004.svg",  // file motive
 true,           // center SVG
 1,              // mirror on x axis
-0.35,           // scale SVG
-1.5,              // x Move SVG
-0,              // y Move SVG
+0.23,           // scale SVG
+2,              // x Move SVG
+-2.5,              // y Move SVG
 0,              // z Move SVG
-10,             // rotate SVG
-2               // extrude SVG (thickness)
+15,             // rotate SVG
+1               // extrude SVG (thickness)
 ];
 
 motiveConf3 = [
-"svg/snowflake.svg",  // file motive
+"svg/unicorn005.svg",  // file motive
 true,           // center SVG
 1,              // mirror on x axis
-0.35,           // scale SVG
-0,              // x Move SVG
-0,              // y Move SVG
+0.18,           // scale SVG
+-2,              // x Move SVG
+-2,              // y Move SVG
 0,              // z Move SVG
-10,             // rotate SVG
+45,             // rotate SVG
 1               // extrude SVG (thickness)
 ];
 
@@ -62,8 +64,8 @@ motiveListA = [
 ];
 
 motiveListB = [
-  /* motiveConf1, */
-  motiveConf3
+  motiveConf3,
+  /* motiveConf3 */
 ];
 
 
