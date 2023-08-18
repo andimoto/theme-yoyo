@@ -22,15 +22,15 @@ showYoyoBuild = false;
 
 /* place svg file configs */
 motiveConf1 = [
-"svg/unicorn001.svg",  // file motive
+"svg/dino001.svg",  // file motive
 true,           // center SVG
 0,              // mirror on x axis
-0.50,           // scale SVG
-1,              // x Move SVG
--2,              // y Move SVG
+0.25,           // scale SVG
+0,              // x Move SVG
+0,              // y Move SVG
 0,              // z Move SVG
 0,             // rotate SVG
-1               // extrude SVG (thickness)
+1.4               // extrude SVG (thickness)
 ];
 
 motiveConf2 = [
@@ -46,15 +46,15 @@ true,           // center SVG
 ];
 
 motiveConf3 = [
-"svg/unicorn005.svg",  // file motive
+"svg/trex001.svg",  // file motive
 true,           // center SVG
-1,              // mirror on x axis
-0.18,           // scale SVG
--2,              // x Move SVG
--2,              // y Move SVG
+0,              // mirror on x axis
+0.14,           // scale SVG
+-3,              // x Move SVG
+-3,              // y Move SVG
 0,              // z Move SVG
 45,             // rotate SVG
-1               // extrude SVG (thickness)
+1.4               // extrude SVG (thickness)
 ];
 
 /* add each motive configuration to this array */
